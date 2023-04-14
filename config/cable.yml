@@ -1,0 +1,38 @@
+#==== Normal Rails App ======================
+# development:
+#   adapter: async
+
+# test:
+#   adapter: test
+
+# production:
+#   adapter: redis
+#   url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+#   channel_prefix: chatapp_production
+# ===========================================
+
+# ========= Getting Redis up and running ============
+# IMPORTANT: This gem is automatically configured for applications made with Rails 7+
+
+# bundle add turbo-rails
+# rails turbo:install
+
+# Run the following commands to get Redis up and running:
+# sudo apt install redis-server # installs redis if you don't have it yet
+# rails turbo:install:redis # changes the development Action Cable adapter from Async (the default one) to Redis in config/cable.yml
+# redis-server # starts the server
+
+# Import `turbo-rails` into the `application.js` file using `import "@hotwired/turbo-rails"`
+# ===================================================
+
+development:
+  adapter: redis
+  url: redis://localhost:6379/1
+
+test:
+  adapter: test
+
+production:
+  adapter: redis
+  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+  channel_prefix: chatapp_production
